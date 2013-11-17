@@ -17,9 +17,9 @@ namespace Anew.AnewAPIAdapter
             DoFlightSearchRQ intermediateSearchRq = new DoFlightSearchRQ();
 
             intermediateSearchRq.adultPax = rq.AdultCount.ToString();
-            if(rq.ChildCount >0)
+            //if(rq.ChildCount >0)
             intermediateSearchRq.childPax = rq.ChildCount.ToString();
-            if(rq.InfantCount >0)
+            //if(rq.InfantCount >0)
             intermediateSearchRq.infantPax = rq.InfantCount.ToString();
 
             Credential credential = new Credential();
@@ -64,6 +64,9 @@ namespace Anew.AnewAPIAdapter
 
             searchRq.currency = rq.Currency;
             searchRq.searchId = intermediateRS.searchId;
+
+            //creating wait for 10 seconds
+            System.Threading.Thread.Sleep(15000);
 
             DoGetFlightResultsRS searchRS = flightServices.getFlightResults(searchRq);
 

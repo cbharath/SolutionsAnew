@@ -1,5 +1,54 @@
-﻿@{
-    ViewBag.Title = "DoSearch";
+﻿@model Anew.AnewModels.FlightSearchRs
+@{
+    ViewBag.Title = "Flight Search Results";
 }
 
-<h2>DoSearch</h2>
+<h2>Flight Search Results</h2>
+<hr />
+<li>Showing the Results from <b>@Model.SearchRequest.CityPares[0].Origin</b> To @Model.SearchRequest.CityPares[0].Destination</li>
+
+@foreach (var FlightResult in Model.FlightSearchResults)
+{
+    <li><b>Itinerary:</b></li>
+    <table class="table table-bordered">
+        @foreach (var leg in FlightResult.Itinerary.Ileg)
+        {
+            if (!leg.IsReturn)
+            {
+                <tr>
+                    <td>Onward Journey Details</td>
+                    <td><b>@leg.FlightCode</b></td>
+                    <td>@leg.FlightNumber<br />@leg.CabinClass/@leg.BookingClass</td>
+                    <td>@leg.FromAirportCode<br />@leg.FromDateTime</td>
+                    <td>@leg.ToAirportCode<br />@leg.ToDateTime</td>
+                    <td>@leg.Duration Minutes</td>
+                </tr>
+            }
+            if (leg.IsReturn)
+            {
+                <tr>
+                    <td>Return Journey Details</td>
+                    <td><b>@leg.FlightCode</b></td>
+                    <td>@leg.FlightNumber<br />@leg.CabinClass/@leg.BookingClass</td>
+                    <td>@leg.FromAirportCode<br />@leg.FromDateTime</td>
+                    <td>@leg.ToAirportCode<br />@leg.ToDateTime</td>
+                    <td>@leg.Duration Minutes</td>
+                </tr>
+            }
+        }
+    </table>
+    <li><b>Tariff:</b></li>
+    <table class="table table-bordered">
+        <tr>
+            <th>Base Fare</th>
+            <th>Tax</th>
+            <th>Total Fare</th>
+        </tr>
+        <tr>
+            <td>@FlightResult.FlightTariff.BaseFare</td>
+            <td>@FlightResult.FlightTariff.Tax</td>
+            <td><h4>@FlightResult.FlightTariff.TotalFare</h4></td>
+        </tr>
+    </table>
+    <hr class="divider"/>
+}
