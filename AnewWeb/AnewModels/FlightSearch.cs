@@ -2,16 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace Anew.AnewModels
 {
     public class FlightSearchRq
     {
         public List<CityPair> CityPares { get; set; }
+
+        [Display(Name = "Journey Type")]
         public JourneyType JourneyType { get; set; }
+
+        [Display(Name = "Currency")]
         public string Currency { get; set; }
+
+        [Display(Name = "Adult Count")]
         public int AdultCount { get; set; }
+
+        [Display(Name = "Child Count")]
         public int ChildCount { get; set; }
+
+        [Display(Name = "Infant Count")]
         public int InfantCount { get; set; }
     }
     public class FlightSearchRs
@@ -53,8 +64,13 @@ namespace Anew.AnewModels
     }
     public class CityPair
     {
+        [Display(Name = "Origin City")]
         public string Origin { get; set; }
+
+        [Display(Name = "Destination City")]
         public string Destination { get; set; }
+
+
         public DateTime DepartureDateTime { get; set; }
     }
     public enum JourneyType

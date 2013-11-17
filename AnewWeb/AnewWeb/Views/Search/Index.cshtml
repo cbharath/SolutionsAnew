@@ -1,0 +1,82 @@
+﻿@model Anew.AnewModels.FlightSearchRq
+@{
+    ViewBag.Title = "Search Request";
+}
+<h2>
+    Flight Search Request</h2>
+<hr />
+@using (Html.BeginForm("Index", "Search", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <div class="form-group">
+        <label class="col-lg-2 control-label">
+            @Html.LabelFor(m => m.Currency)</label>
+        <div class="col-lg-2">
+            @Html.TextBoxFor(m => m.Currency, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">
+            @Html.LabelFor(m => m.JourneyType)</label>
+        <div class="col-lg-2">
+            @Html.RadioButtonFor(model => model.JourneyType, "OneWay", new { Checked = "checked" })
+            @Html.LabelFor(model => model.JourneyType, "OneWay")
+        </div>
+        <div class="col-lg-3">
+            @Html.RadioButtonFor(model => model.JourneyType, "Return")
+            @Html.LabelFor(model => model.JourneyType, "Return")
+        </div>
+        <div class="col-lg-4">
+            @Html.RadioButtonFor(model => model.JourneyType, "MultiDestination")
+            @Html.LabelFor(model => model.JourneyType, "MultiDestination")
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label">
+            @Html.LabelFor(m => m.CityPares[0].Origin)</label>
+        <div class="col-lg-2">
+            @Html.TextBoxFor(m => m.CityPares[0].Origin, new { @class = "form-control" })
+        </div>
+        <label class="col-lg-2 control-label">
+            @Html.LabelFor(m => m.CityPares[0].Destination)</label>
+        <div class="col-lg-2">
+            @Html.TextBoxFor(m => m.CityPares[0].Destination, new { @class = "form-control" })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-lg-2 control-label">
+            Departure Date</label>
+        <div class="col-lg-2">
+            @Html.TextBoxFor(m => m.CityPares[0].DepartureDateTime, new { @class = "form-control" })
+        </div>
+        <label class="col-lg-2 control-label">
+            Arrival Date</label>
+        <div class="col-lg-2">
+            @Html.TextBoxFor(m => m.CityPares[1].DepartureDateTime, new { @class = "form-control" })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-lg-2 control-label">
+            Passanger Count</label>
+        <div class="col-lg-2">
+            @Html.LabelFor(model => model.AdultCount, "Adults")
+            @Html.TextBoxFor(model => model.AdultCount, new { @class = "form-control" })
+        </div>
+        <div class="col-lg-3">
+            @Html.LabelFor(model => model.ChildCount, "Children")
+            @Html.TextBoxFor(model => model.ChildCount, new { @class = "form-control" })
+        </div>
+        <div class="col-lg-4">
+            @Html.LabelFor(model => model.InfantCount, "Infants")
+            @Html.TextBoxFor(model => model.InfantCount, new { @class = "form-control" })
+        </div>
+    </div>
+    <hr />
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <button type="submit" class="btn btn-primary">
+                Sign in</button>
+        </div>
+    </div>
+}

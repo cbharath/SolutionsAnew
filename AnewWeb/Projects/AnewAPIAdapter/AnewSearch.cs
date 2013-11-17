@@ -8,7 +8,7 @@ using System.IO;
 
 namespace Anew.AnewAPIAdapter
 {
-    class AnewSearch
+    public class AnewSearch
     {
         FlightService flightServices = new FlightService();
 
@@ -17,7 +17,9 @@ namespace Anew.AnewAPIAdapter
             DoFlightSearchRQ intermediateSearchRq = new DoFlightSearchRQ();
 
             intermediateSearchRq.adultPax = rq.AdultCount.ToString();
+            if(rq.ChildCount >0)
             intermediateSearchRq.childPax = rq.ChildCount.ToString();
+            if(rq.InfantCount >0)
             intermediateSearchRq.infantPax = rq.InfantCount.ToString();
 
             Credential credential = new Credential();
