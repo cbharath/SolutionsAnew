@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<wsdlParameters xmlns="http://microsoft.com/webReference/">
+  <nologo>true</nologo>
+  <parsableerrors>true</parsableerrors>
+  <sharetypes>true</sharetypes>
+  <namespace>AnewAPIAdapter</namespace>
+  <language>CS</language>
+  <out>AnewAPIProxy.cs</out>
+  <documents>
+    <document>http://apiv1.fare.net/services/FlightService?wsdl</document>
+  </documents>
+</wsdlParameters>

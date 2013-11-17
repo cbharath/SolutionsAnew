@@ -1,0 +1,56 @@
+﻿@model AnewWeb.Models.SessionKey
+@{
+    ViewBag.Title = "SessionKey";
+}
+<h2>
+    SessionKey</h2>
+@using (Html.BeginForm("SessionKey", "CreateSession", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <div class="form-group">
+        <label class="col-lg-2 control-label">
+            @Html.LabelFor(m => m.UserId)</label>
+        <div class="col-lg-2">
+            @Html.TextBoxFor(m => m.UserId, new { @class = "form-control" })
+        </div>
+        <div class="col-lg-3">
+        @Html.ValidationMessageFor(m => m.UserId)
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword1" class="col-lg-2 control-label">
+            @Html.LabelFor(m => m.Password)</label>
+        <div class="col-lg-2">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </div>
+        <div class="col-lg-3">
+        @Html.ValidationMessageFor(m => m.Password)
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <button type="submit" class="btn btn-primary">
+                Sign in</button>
+        </div>
+    </div>
+    
+   @* <fieldset>
+        <legend>Log in Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.UserId)
+                @Html.TextBoxFor(m => m.UserId)
+                @Html.ValidationMessageFor(m => m.UserId)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </li>
+        </ol>
+        <input type="submit" value="Log in" />
+    </fieldset>*@
+}
+<fieldset>
+    <legend>SessionKey</legend>
+    <h2>@ViewBag.Message</h2>
+</fieldset>
